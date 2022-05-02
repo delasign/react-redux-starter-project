@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Getting Started with delasign's tutorial on React Redux.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Subequently it followed the tutorial found on:
+https://www.delasign.com/blog/ts-react-redux-guide-2022/
+
+Please note that this guide uses Styled Components. To learn more about Styled Components please visit:
+https://styled-components.com
 
 ## Available Scripts
 
