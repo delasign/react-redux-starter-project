@@ -8,6 +8,12 @@ https://www.delasign.com/blog/ts-react-redux-guide-2022/
 Please note that this guide uses Styled Components. To learn more about Styled Components please visit:
 https://styled-components.com
 
+## Getting Setup
+
+1. Download the repository.
+2. Run yarn install to install all the dependencies.
+3. Run yarn start to initiate the development environment.
+
 ## Available Scripts
 
 In the project directory, you can run:
