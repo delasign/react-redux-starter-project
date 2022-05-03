@@ -1,12 +1,10 @@
-# Getting Started with delasign's tutorial on React Redux.
+# Sample React Redux Starter Project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sample react-redux starter project that demonstrates its use via a counter.
 
-Subequently it followed the tutorial found on:
-https://www.delasign.com/blog/ts-react-redux-guide-2022/
+It followed the tutorial found on: https://www.delasign.com/blog/ts-react-redux-guide-2022/
 
-Please note that this guide uses Styled Components. To learn more about Styled Components please visit:
-https://styled-components.com
+Please note that this guide uses Styled Components. To learn more about Styled Components please visit:https://styled-components.com
 
 ## Getting Setup
 
