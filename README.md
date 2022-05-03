@@ -1,6 +1,6 @@
-# Sample React Redux Starter Project.
+# Sample Typescript + React Redux Starter Project.
 
-A sample react-redux starter project that demonstrates its use via a counter.
+A sample Typescript + React-Redux starter project that demonstrates its use via a counter.
 
 It followed the tutorial found on: https://www.delasign.com/blog/ts-react-redux-guide-2022/
 
