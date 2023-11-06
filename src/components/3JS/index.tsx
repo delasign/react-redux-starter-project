@@ -74,8 +74,8 @@ const Scene = ({}: Props) => {
     const lightPosition = new THREE.Vector3(0, 5, 5);
     const lightColor = new THREE.Color(1, 1, 1);
 
-    const pointLight = new THREE.AmbientLight(lightColor); // Color of the point light
-    pointLight.position.set(lightPosition.x, lightPosition.y, lightPosition.z); // Position of the point light
+    const pointLight = new THREE.AmbientLight(lightColor);
+    pointLight.position.set(lightPosition.x, lightPosition.y, lightPosition.z);
     scene.add(pointLight);
 
     // Create a plane that matches the camera view
@@ -85,8 +85,8 @@ const Scene = ({}: Props) => {
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
       uniforms: {
-        pointLightPosition: { value: lightPosition }, // Adjust the position
-        pointLightColor: { value: lightColor }, // Adjust the color
+        pointLightPosition: { value: lightPosition },
+        pointLightColor: { value: lightColor },
       },
     });
 
