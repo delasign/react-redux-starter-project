@@ -67,14 +67,23 @@ const Scene = ({}: Props) => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     containerRef.current.appendChild(renderer.domElement);
 
-    // Create a plane that matches the camera view
+    // Create a plane
     const planeGeometry = new THREE.PlaneGeometry(2, 2);
     // Standard Material
-    const planeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const planeMaterial = new THREE.MeshLambertMaterial({
+      color: 0xffffff,
+      side: THREE.DoubleSide,
+    });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
     // Add the Plane
     scene.add(plane);
+
+    // Add a Light
+    let light = new THREE.AmbientLight(0xe5df25);
+    light.intensity = 1;
+    light.position.set(0, 0, 1);
+    scene.add(light);
 
     // Position the camera
     camera.position.z = 5;
