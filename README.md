@@ -1,4 +1,4 @@
-# Sample Typescript + React Redux Starter Project.
+# Typescript + React Redux Starter Project.
 
 A sample Typescript + React-Redux starter project that demonstrates its use via a counter.
 
@@ -49,8 +49,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 📰 Guides
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. <a href="https://delasign.com/blog/ts-react-redux-guide-2022/?utm=swift-starter-project">Typescript & React Redux: A Quick Setup Guide (2022) 🔗</a>
