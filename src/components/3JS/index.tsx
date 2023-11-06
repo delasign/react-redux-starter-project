@@ -7,6 +7,8 @@ import * as THREE from "three";
 // MARK: Types
 // MARK: Components
 // MARK: Shaders
+import vertexShader from "shaders/sample/vertex";
+import fragmentShader from "shaders/sample/fragment";
 // MARK: Functionality
 // MARK: Utils
 
@@ -69,9 +71,12 @@ const Scene = ({}: Props) => {
 
     // Create a plane that matches the camera view
     const planeGeometry = new THREE.PlaneGeometry(2, 2);
-    // Standard Material
-    const planeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    // Shader Material
+    const shaderMaterial = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+    });
+    const plane = new THREE.Mesh(planeGeometry, shaderMaterial);
 
     // Add the Plane
     scene.add(plane);
