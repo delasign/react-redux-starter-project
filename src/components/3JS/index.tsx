@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import * as THREE from "three";
 
+
 // MARK: Redux
 // MARK: Types
 // MARK: Components
@@ -71,12 +72,55 @@ const Scene = ({}: Props) => {
 
     // Create a plane that matches the camera view
     const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+    /// Create a custom attribute for the colors
+
+    const red = new THREE.Color(1,0,0);
+    const green = new THREE.Color(0,1,0);
+    const blue = new THREE.Color(0,0,1);
+
+    // There are 4 vertices on 6 faces - therefore there are 24 colors.
+    const colors = new Float32Array([
+      red.r, red.b, red.g,  // Red
+      green.r, green.b, green.g, // Green
+      blue.r, blue.b, blue.g,  // Blue
+      blue.r, blue.b, blue.g,  // Blue
+      green.r, green.b, green.g, // Green
+      red.r, red.b, red.g,  // Red
+
+      1, 0, 0,  // Red
+      0, 1, 0,  // Green
+      0, 0, 1,  // Blue
+      1, 1, 0,  // Yellow
+      1, 0, 1,  // Magenta
+      0, 1, 1,  // Cyan
+
+      1, 0, 0,  // Red
+      0, 1, 0,  // Green
+      0, 0, 1,  // Blue
+      1, 1, 0,  // Yellow
+      1, 0, 1,  // Magenta
+      0, 1, 1,  // Cyan
+
+      1, 0, 0,  // Red
+      0, 1, 0,  // Green
+      0, 0, 1,  // Blue
+      1, 1, 0,  // Yellow
+      1, 0, 1,  // Magenta
+      0, 1, 1,  // Cyan
+    ]);
+
+    const colorAttribute = new THREE.BufferAttribute(colors, 3); // 3 components (RGB) per vertex
+    geometry.setAttribute("aVertexColor", colorAttribute);
+
     // Standard Material
     // const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
-      fragmentShader: fragmentShader
+      fragmentShader: fragmentShader,
+      vertexColors: true
     })
+    
     const cube = new THREE.Mesh(geometry, material);
 
     cube.rotation.x += 45;
@@ -88,6 +132,7 @@ const Scene = ({}: Props) => {
     // Position the camera
     camera.position.z = 5;
     renderer.render(scene, camera);
+
   };
   // When the window resizes adapt the scene
   const onWindowResize = () => {
