@@ -7,6 +7,8 @@ import * as THREE from "three";
 // MARK: Types
 // MARK: Components
 // MARK: Shaders
+import vertexShader from "shaders/sample/vertex";
+import fragmentShader from "shaders/sample/fragment";
 // MARK: Functionality
 // MARK: Utils
 
@@ -70,7 +72,11 @@ const Scene = ({}: Props) => {
     // Create a plane that matches the camera view
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     // Standard Material
-    const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    // const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const material = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader
+    })
     const cube = new THREE.Mesh(geometry, material);
 
     cube.rotation.x += 45;
