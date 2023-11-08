@@ -76,7 +76,6 @@ const Scene = ({}: Props) => {
     const geometry = new THREE.BoxGeometry(1, 1, 1);
 
     /// Create the color
-
     const red = new THREE.Color(1,0,0);
     const green = new THREE.Color(0,0,1);
     const blue = new THREE.Color(0,1,0);
@@ -86,7 +85,6 @@ const Scene = ({}: Props) => {
 
     // There are 4 vertices on 6 faces - therefore there are 24 colors.
     // Set teh colors for each vertex of each face.
-
     const colors = new Float32Array([
       red.r, red.b, red.g,  // Right Face | Top Right 
       red.r, red.b, red.g,  // Right Face | Top Left 
@@ -118,7 +116,7 @@ const Scene = ({}: Props) => {
       cyan.r, cyan.b, cyan.g, // Back Face | Bottom Right
       cyan.r, cyan.b, cyan.g, // Back Face | Bottom Left
     ]);
-    
+
     // Set the color attribute
     const colorAttribute = new THREE.BufferAttribute(colors, 3); // 3 components (RGB) per vertex
     geometry.setAttribute("aVertexColor", colorAttribute);
@@ -127,8 +125,7 @@ const Scene = ({}: Props) => {
     // const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
-      fragmentShader: fragmentShader,
-      vertexColors: true
+      fragmentShader: fragmentShader
     })
     
     const cube = new THREE.Mesh(geometry, material);
