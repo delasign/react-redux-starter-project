@@ -2,6 +2,9 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import * as THREE from "three";
+// Import the camera controls
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
 
 // MARK: Redux
 // MARK: Types
@@ -56,6 +59,10 @@ const Scene = ({}: Props) => {
   const renderer = new THREE.WebGLRenderer();
   const camera = new THREE.PerspectiveCamera();
 
+  // Setup the Camera
+  const controls = new OrbitControls( camera, renderer.domElement );
+
+
   // MARK: Functionality
   const renderScene = () => {
     // Clear the Scene
@@ -68,7 +75,6 @@ const Scene = ({}: Props) => {
     // Set up the renderer
     renderer.setSize(window.innerWidth, window.innerHeight);
     containerRef.current.appendChild(renderer.domElement);
-
     // Create a plane that matches the camera view
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     // Standard Material
@@ -88,6 +94,8 @@ const Scene = ({}: Props) => {
     // Position the camera
     camera.position.z = 5;
     renderer.render(scene, camera);
+    // Make sure you call animate
+    animate();
   };
   // When the window resizes adapt the scene
   const onWindowResize = () => {
@@ -100,6 +108,8 @@ const Scene = ({}: Props) => {
   const animate = () => {
     requestAnimationFrame(animate);
     renderer.clear();
+    // Update Controls
+    controls.update();
     renderer.render(scene, camera);
   };
 
