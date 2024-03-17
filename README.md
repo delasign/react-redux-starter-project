@@ -1,4 +1,4 @@
-# Sample Typescript + React Redux Starter Project.
+# Typescript + React Redux Starter Project.
 
 A sample Typescript + React-Redux starter project that demonstrates its use via a counter.
 
@@ -49,8 +49,34 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+# 📰 Guides
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. <a href="https://delasign.com/blog/ts-react-redux-guide-2022/?utm=react-redux-starter-project">Typescript & React Redux: A Quick Setup Guide (2022) 🔗</a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 📚 Tutorials
+
+## CSS
+
+1. <a href="https://www.delasign.com/blog/reactjs-outline-text-css/">How to Outline Text in CSS 🔗</a>
+2. <a href="https://www.delasign.com/blog/reactjs-gradient-text-css/">How to apply a Gradient to Text in CSS 🔗</a>
+3. <a href="https://www.delasign.com/blog/reactjs-drop-shadow-css/">How to apply one or many drop shadows to text in CSS 🔗</a>
+4. <a href="https://www.delasign.com/blog/reactjs-multiple-filters-css/">How to apply multiple CSS filters 🔗</a>
+5. <a href="https://www.delasign.com/blog/reactjs-outline-gradient-text-css/">How to create text that has a Stroke and a Gradient fill in CSS 🔗</a>
+
+## ThreeJS
+
+### Setup
+
+1. <a href="https://delasign.com/blog/reactjs-3js-starter-project/?utm=react-redux-starter-project">How to create a ThreeJS responsive 
+ReactJS project 🔗</a>
+2. <a href="https://delasign.com/blog/reactjs-3js-setup-shader/?utm=react-redux-starter-project">How to add a shader to a ThreeJS geometry in ReactJS 🔗</a>
+3. <a href="https://delasign.com/blog/reactjs-3js-lights-standard-material/?utm=react-redux-starter-project">How to add lights to a standard material in ThreeJS 🔗</a>
+4. <a href="https://delasign.com/blog/reactjs-3js-lights-shader-material/?utm=react-redux-starter-project">How to add lights to a material that uses a shader in ThreeJS 🔗</a>
+
+### Uniforms, Varying & Attributes
+1. <a href="https://delasign.com/blog/reactjs-3js-data-vertex-to-fragment/?utm=react-redux-starter-project">How to pass data from a vertex shader to a fragment shader in ThreeJS 🔗</a>
+2. <a href="https://delasign.com/blog/reactjs-3js-data-to-vertex-and-fragment/?utm=react-redux-starter-project">How to create and use uniform data in shaders in ThreeJS 🔗</a>
+
+### Errors
+
+1. <a href="https://delasign.com/blog/reactjs-renders-multiple-threejs-canvases-on-save-error/?utm=react-redux-starter-project">ReactJS renders multiple ThreeJS canvases on save 🔗</a>
