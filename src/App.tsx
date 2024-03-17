@@ -10,11 +10,11 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-interface OutlinedLetterProps {
-  backgroundGradient: string;
+interface LetterWithDropShadowEffectProps {
+  filter: string;
 }
 
-const GradientLetter = styled.p<OutlinedLetterProps>`
+const LetterWithDropShadowEffect = styled.p<LetterWithDropShadowEffectProps>`
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
   font-size: 140px;
   font-style: normal;
@@ -23,42 +23,18 @@ const GradientLetter = styled.p<OutlinedLetterProps>`
   margin-block-end: 0px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  background: ${({ backgroundGradient }) => backgroundGradient};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
+  -webkit-filter: ${({ filter }) => filter};
+  filter:  ${({ filter }) => filter};
 `;
 
 function App() {
 
-  const gradients = [
-    "#A3333C",
-    "#DD7E08",
-    "#F2BA59",
-    "#444621",
-    "#437CC7",
-    "#944578",
-    "#000000"
-  ];
-
-  const constructGradient = (): string => {
-    var gradient = "linear-gradient(to right, "
-
-    for (let i = 0; i < gradients.length; i++) {
-      gradient += gradients[i] + " " + 100/(gradients.length-1)*i + "%"
-      if (i !== gradients.length - 1) {
-        gradient += ", "
-      }
-    }
-
-    gradient += ")"
-    return gradient;
-  }
-
   return (
     <Container>
-      <GradientLetter backgroundGradient={constructGradient()}>
+      <LetterWithDropShadowEffect filter={"drop-shadow(1.25px -0.67px 2.5px #A3333C) drop-shadow(-0px 0.375px 1.25px #DD7E08)"}>
         Aa
-      </GradientLetter>
+      </LetterWithDropShadowEffect>
     </Container>
   );
 }
