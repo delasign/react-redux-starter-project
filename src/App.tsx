@@ -10,11 +10,11 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-interface OutlinedLetterProps {
+interface GradientLetterProps {
   backgroundGradient: string;
 }
 
-const GradientLetter = styled.p<OutlinedLetterProps>`
+const GradientLetter = styled.p<GradientLetterProps>`
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
   font-size: 140px;
   font-style: normal;
