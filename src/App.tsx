@@ -101,6 +101,8 @@ const GradientAndLetterAsOne = styled.p<GradientAndLetterAsOneProps>`
 
 function App() {
 
+  const text = "Aa"
+
   const gradients = [
     "#A3333C",
     "#DD7E08",
@@ -129,7 +131,7 @@ function App() {
     return (
       <Container>
         <GradientAndLetterAsOne backgroundGradient={constructGradient()} strokeWidth={2} strokeColor={"black"} aria-hidden={true}>
-          Aa
+          {text}
         </GradientAndLetterAsOne>
       </Container>
     );
@@ -140,10 +142,10 @@ function App() {
       <Container>
         <LetterContainer>
         <GradientLetter backgroundGradient={constructGradient()}>
-          Aa
+          {text}
         </GradientLetter>
         <OutlinedLetter strokeWidth={2} strokeColor={"black"} aria-hidden={true}>
-          Aa
+          {text}
         </OutlinedLetter>
         </LetterContainer>
       </Container>
