@@ -10,6 +10,10 @@ const Container = styled.div`
   height: 100vh;
 `;
 
+const LetterContainer = styled.div`
+  position: relative;
+`
+
 interface GradientLetterProps {
   backgroundGradient: string;
 }
@@ -23,6 +27,73 @@ const GradientLetter = styled.p<GradientLetterProps>`
   margin-block-end: 0px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+  background: ${({ backgroundGradient }) => backgroundGradient};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+interface OutlinedLetterProps {
+  strokeColor: string;
+  strokeWidth: number;
+}
+
+// Answer from Ryall (https://stackoverflow.com/users/147731/ryall)
+// https://stackoverflow.com/questions/26634201/add-stroke-around-text-on-the-outside-with-css
+// We have adapted it by applying an absolute position, a z-index, a top and a left.
+
+const OutlinedLetter = styled.p<OutlinedLetterProps>`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  font-size: 140px;
+  font-style: normal;
+  font-weight: 600;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: white;
+  text-shadow: ${({ strokeColor, strokeWidth }) => 
+  "-"+strokeWidth+"px -"+strokeWidth+"px  0 "+strokeColor+", "
+  + "0px -"+strokeWidth+"px 0 "+strokeColor+", "
+  + ""+strokeWidth+"px -"+strokeWidth+"px  0 "+strokeColor+", "
+  + ""+strokeWidth+"px 0px  0 "+strokeColor+", "
+  + ""+strokeWidth+"px "+strokeWidth+"px  0 "+strokeColor+", "
+  + "0px "+strokeWidth+"px  0 "+strokeColor+", "
+  + "-"+strokeWidth+"px "+strokeWidth+"px  0 "+strokeColor+", "
+  + "-"+strokeWidth+"px 0px  0 "+strokeColor+""};
+  paint-order: fill stroke; 
+`;
+
+interface GradientAndLetterAsOneProps {
+  backgroundGradient: string;
+  strokeColor: string;
+  strokeWidth: number;
+}
+
+
+const GradientAndLetterAsOne = styled.p<GradientAndLetterAsOneProps>`
+  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  font-size: 140px;
+  font-style: normal;
+  font-weight: 600;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: white;
+  text-shadow: ${({ strokeColor, strokeWidth }) => 
+  "-"+strokeWidth+"px -"+strokeWidth+"px  0 "+strokeColor+", "
+  + "0px -"+strokeWidth+"px 0 "+strokeColor+", "
+  + ""+strokeWidth+"px -"+strokeWidth+"px  0 "+strokeColor+", "
+  + ""+strokeWidth+"px 0px  0 "+strokeColor+", "
+  + ""+strokeWidth+"px "+strokeWidth+"px  0 "+strokeColor+", "
+  + "0px "+strokeWidth+"px  0 "+strokeColor+", "
+  + "-"+strokeWidth+"px "+strokeWidth+"px  0 "+strokeColor+", "
+  + "-"+strokeWidth+"px 0px  0 "+strokeColor+""};
+  paint-order: fill stroke; 
   background: ${({ backgroundGradient }) => backgroundGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -54,13 +125,32 @@ function App() {
     return gradient;
   }
 
-  return (
-    <Container>
-      <GradientLetter backgroundGradient={constructGradient()}>
-        Aa
-      </GradientLetter>
-    </Container>
-  );
+  const renderCombinedGradientAndText = () => {
+    return (
+      <Container>
+        <GradientAndLetterAsOne backgroundGradient={constructGradient()} strokeWidth={2} strokeColor={"black"} aria-hidden={true}>
+          Aa
+        </GradientAndLetterAsOne>
+      </Container>
+    );
+  }
+
+  const renderSuperpositionedText = () => {
+    return (
+      <Container>
+        <LetterContainer>
+        <GradientLetter backgroundGradient={constructGradient()}>
+          Aa
+        </GradientLetter>
+        <OutlinedLetter strokeWidth={2} strokeColor={"black"} aria-hidden={true}>
+          Aa
+        </OutlinedLetter>
+        </LetterContainer>
+      </Container>
+    );
+  }
+
+  return renderSuperpositionedText();
 }
 
 export default App;
