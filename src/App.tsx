@@ -11,14 +11,10 @@ const Container = styled.div`
 `;
 
 interface OutlinedLetterProps {
-  strokeColor: string;
-  strokeWidth: number;
+  backgroundGradient: string;
 }
 
-// Answer from Ryall (https://stackoverflow.com/users/147731/ryall)
-// https://stackoverflow.com/questions/26634201/add-stroke-around-text-on-the-outside-with-css
-
-const OutlinedLetter = styled.p<OutlinedLetterProps>`
+const GradientLetter = styled.p<OutlinedLetterProps>`
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
   font-size: 140px;
   font-style: normal;
@@ -27,25 +23,42 @@ const OutlinedLetter = styled.p<OutlinedLetterProps>`
   margin-block-end: 0px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  color: white;
-  text-shadow: ${({ strokeColor, strokeWidth }) => 
-  "-"+strokeWidth+"px -"+strokeWidth+"px  0 "+strokeColor+", "
-  + "0px -"+strokeWidth+"px 0 "+strokeColor+", "
-  + ""+strokeWidth+"px -"+strokeWidth+"px  0 "+strokeColor+", "
-  + ""+strokeWidth+"px 0px  0 "+strokeColor+", "
-  + ""+strokeWidth+"px "+strokeWidth+"px  0 "+strokeColor+", "
-  + "0px "+strokeWidth+"px  0 "+strokeColor+", "
-  + "-"+strokeWidth+"px "+strokeWidth+"px  0 "+strokeColor+", "
-  + "-"+strokeWidth+"px 0px  0 "+strokeColor+""};
-  paint-order: fill stroke; 
+  background: ${({ backgroundGradient }) => backgroundGradient};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 function App() {
+
+  const gradients = [
+    "#A3333C",
+    "#DD7E08",
+    "#F2BA59",
+    "#444621",
+    "#437CC7",
+    "#944578",
+    "#000000"
+  ];
+
+  const constructGradient = (): string => {
+    var gradient = "linear-gradient(to right, "
+
+    for (let i = 0; i < gradients.length; i++) {
+      gradient += gradients[i] + " " + 100/(gradients.length-1)*i + "%"
+      if (i !== gradients.length - 1) {
+        gradient += ", "
+      }
+    }
+
+    gradient += ")"
+    return gradient;
+  }
+
   return (
     <Container>
-      <OutlinedLetter strokeWidth={1} strokeColor={"black"}>
+      <GradientLetter backgroundGradient={constructGradient()}>
         Aa
-      </OutlinedLetter>
+      </GradientLetter>
     </Container>
   );
 }
