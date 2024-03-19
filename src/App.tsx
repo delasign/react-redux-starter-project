@@ -2,12 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import "./App.css";
 
-const Container = styled.div`
+interface ContainerProps {
+  backgroundColor: string;
+}
+
+const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 const LetterContainer = styled.div`
@@ -16,10 +21,16 @@ const LetterContainer = styled.div`
 
 interface GradientLetterProps {
   backgroundGradient: string;
+  position: string;
+  zIndex: number;
 }
 
 const GradientLetter = styled.p<GradientLetterProps>`
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  position: ${({ position }) => position};
+  z-index: ${({ zIndex }) => zIndex};
+  top: 0;
+  left: 0;
   font-size: 140px;
   font-style: normal;
   font-weight: 600;
@@ -43,7 +54,7 @@ interface OutlinedLetterProps {
 
 const OutlinedLetter = styled.p<OutlinedLetterProps>`
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   top: 0;
   left: 0;
   font-family: -apple-system, system-ui, BlinkMacSystemFont;
@@ -101,7 +112,10 @@ const GradientAndLetterAsOne = styled.p<GradientAndLetterAsOneProps>`
 
 function App() {
 
+  const backgroundColor = "white"
+
   const text = "Aa";
+  const textTwo = "Bb";
   const strokeWidth = 2;
   const strokeColor = "black";
 
@@ -131,7 +145,7 @@ function App() {
 
   const renderCombinedGradientAndText = () => {
     return (
-      <Container>
+      <Container backgroundColor={backgroundColor}>
         <GradientAndLetterAsOne backgroundGradient={constructGradient()} strokeWidth={strokeWidth} strokeColor={strokeColor}>
           {text}
         </GradientAndLetterAsOne>
@@ -141,14 +155,28 @@ function App() {
 
   const renderSuperpositionedText = () => {
     return (
-      <Container>
+      <Container backgroundColor={backgroundColor}>
         <LetterContainer>
-        <GradientLetter backgroundGradient={constructGradient()}>
-          {text}
-        </GradientLetter>
-        <OutlinedLetter strokeWidth={strokeWidth} strokeColor={strokeColor} aria-hidden={true}>
-          {text}
-        </OutlinedLetter>
+          <GradientLetter position="" zIndex={0} backgroundGradient={constructGradient()}>
+            {text}
+          </GradientLetter>
+          <GradientLetter position="absolute" zIndex={2} backgroundGradient={constructGradient()} aria-hidden={true}>
+            {text}
+          </GradientLetter>
+          <OutlinedLetter strokeWidth={strokeWidth} strokeColor={strokeColor} aria-hidden={true}>
+            {text}
+          </OutlinedLetter>
+        </LetterContainer>
+        <LetterContainer>
+          <GradientLetter position="" zIndex={0} backgroundGradient={constructGradient()}>
+            {textTwo}
+          </GradientLetter>
+          <GradientLetter position="absolute" zIndex={2} backgroundGradient={constructGradient()} aria-hidden={true}>
+            {textTwo}
+          </GradientLetter>
+          <OutlinedLetter strokeWidth={strokeWidth} strokeColor={strokeColor} aria-hidden={true}>
+            {textTwo}
+          </OutlinedLetter>
         </LetterContainer>
       </Container>
     );
